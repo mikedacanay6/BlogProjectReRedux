@@ -29,7 +29,7 @@ const Login = () => {
             <h1 className='text-3xl font-medium '>Login</h1>
 
             <form onSubmit={handleLogin} className='flex flex-col gap-4 mt-4'>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='Username' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='Email' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Password' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
 
                 <button className='bg-blue-600 text-white p-2 rounded-xl shadow-xl cursor-pointer'>Login</button>
