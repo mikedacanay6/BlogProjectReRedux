@@ -11,7 +11,7 @@ const Registration = () => {
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const { data, error } = await supaBase.auth.signUp({
+        const { error } = await supaBase.auth.signUp({
             email: email,
             password: password
         })
