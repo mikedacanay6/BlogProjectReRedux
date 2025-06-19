@@ -24,42 +24,48 @@ const NavBar = () => {
         <div className='flex justify-between items-center'>
             <h1 className='text-3xl font-medium '>Blogify</h1>
 
-            <div className='flex items-center'>
-                {
-                    user ? (
-                        <div className='relative'>
-                            <button
-                                onClick={() => dispatch(logout())}
-                                className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2 '
-                            >
-                                Logout
-                            </button>
-                        </div>
-                    ) : (
-                        <div>
-                            <Link
-                                to='/login'
-                                className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2'
-                            >
-                                Login
-                            </Link>
-                        </div>
-                    )
-                }
+            {
+                location.pathname !== '/create' && (
+                    
+                    <div className='flex items-center'>
+                        {
+                            user ? (
+                                <div className='relative'>
+                                    <button
+                                        onClick={() => dispatch(logout())}
+                                        className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2 '
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div>
+                                    <Link
+                                        to='/login'
+                                        className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2'
+                                    >
+                                        Login
+                                    </Link>
+                                </div>
+                            )
+                        }
 
-                {
-                    links.map((link) => {
-                        return (
-                            <Link
-                                to={link.path}
-                                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2'
-                            >
-                                {link.name}
-                            </Link>
-                        )
-                    })
-                }
-            </div>
+                        {
+                            links.map((link) => {
+                                return (
+                                    <Link
+                                        to={link.path}
+                                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2'
+                                    >
+                                        {link.name}
+                                    </Link>
+                                )
+                            })
+                        }
+                    </div>
+                )
+            }
+
         </div>
     </div>
   )
