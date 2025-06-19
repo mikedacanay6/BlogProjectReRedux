@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch, RootState } from '../app/store';
@@ -8,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 
 const NavBar = () => {
 
-    const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.auth.user)
