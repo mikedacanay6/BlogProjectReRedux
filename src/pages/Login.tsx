@@ -43,6 +43,7 @@ const Login = () => {
 
             <div className='text-center'>
                 <p>Don't have an account? <Link to="/register" className='text-blue-600'>Register</Link></p>
+                <p>Enter as a <Link to="/" className='text-blue-600'>Guest</Link></p>
             </div>
         </div>
     </div>

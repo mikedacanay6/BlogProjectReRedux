@@ -6,6 +6,7 @@ const Registration = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = async (e: React.FormEvent) => {
@@ -13,7 +14,12 @@ const Registration = () => {
 
         const { error } = await supaBase.auth.signUp({
             email: email,
-            password: password
+            password: password,
+            options: {
+                data: {
+                    first_name: name,
+                }
+            }
         })
 
         if (error) {
@@ -33,6 +39,7 @@ const Registration = () => {
             <form onSubmit={handleRegister} className='flex flex-col gap-4 mt-4'>
                 <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='Password' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
+                <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder='Name' className='border border-gray-400 w-full p-2 rounded-xl shadow-xl' required/>
 
                 <button type='submit' className='bg-blue-600 text-white p-2 rounded-xl shadow-xl cursor-pointer'>Register</button>
             </form>

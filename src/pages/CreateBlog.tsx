@@ -25,7 +25,7 @@ const CreateBlog = () => {
       title: title,
       content: content,
       user_id: user?.id,
-      madeBy: user?.email
+      madeBy: user?.user_metadata.first_name
     }
 
     try {
