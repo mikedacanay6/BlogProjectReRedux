@@ -25,7 +25,7 @@ const NavBar = () => {
             <h1 className='text-3xl font-medium '>Blogify</h1>
 
             {
-                location.pathname !== '/create' && location.pathname !== '/update' && (
+                location.pathname !== '/create' && !location.pathname.startsWith('/update') && (
                     
                     <div className='flex items-center'>
                         {
