@@ -23,7 +23,9 @@ const Registration = () => {
         })
 
         if (error) {
-            console.log(error);
+            const err = error as Error;
+            console.log(err.message);
+            alert(err.message);
         } else {
             navigate('/login');
             setEmail('');

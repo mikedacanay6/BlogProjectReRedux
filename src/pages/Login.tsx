@@ -19,7 +19,8 @@ const Login = () => {
             await dispatch(login({  email, password })).unwrap();
             navigate('/');
         } catch (error) {
-            console.log(error);
+            const err = error as Error;
+            alert(err.message);
         }
     }
 
