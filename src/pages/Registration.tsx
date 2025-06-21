@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import supaBase from '../supabase-client';
 import { useNavigate } from 'react-router-dom';
+import { signUp } from '../app/authSlice';
+import { useDispatch } from 'react-redux';
+import type { AppDispatch } from '../app/store';
 
 const Registration = () => {
 
@@ -8,28 +11,20 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
 
     const handleRegister = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const { error } = await supaBase.auth.signUp({
-            email: email,
-            password: password,
-            options: {
-                data: {
-                    first_name: name,
-                }
-            }
-        })
-
-        if (error) {
-            const err = error as Error;
-            console.log(err.message);
-            alert(err.message);
-        } else {
+        try {
+            await dispatch(signUp({ email, password, name }));
             navigate('/login');
             setEmail('');
             setPassword('');
+        } catch (error) {
+            const err = error as Error;
+            console.log(err.message);
+            alert(err.message);
         }
     }
 

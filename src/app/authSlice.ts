@@ -28,6 +28,20 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }: 
     return data.user;
 });
 
+export const signUp = createAsyncThunk('auth/signUp', async ({ email, password, name }: { email: string, password: string, name: string }) => {
+    const { data, error } = await supaBase.auth.signUp({ 
+        email, 
+        password,
+        options: {
+            data: {
+                first_name: name,
+            }
+        }
+     });
+    if (error) throw error;
+    return data.user;
+})
+
 const authSlice = createSlice({
     name: "auth",
     initialState,
@@ -47,6 +61,9 @@ const authSlice = createSlice({
             state.user = null;
         })
         builder.addCase(login.fulfilled, (state, action) => {
+            state.user = action.payload;
+        })
+        builder.addCase(signUp.fulfilled, (state, action) => {
             state.user = action.payload;
         })
     },
