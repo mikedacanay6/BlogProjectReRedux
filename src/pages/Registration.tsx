@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import supaBase from '../supabase-client';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../app/authSlice';
 import { useDispatch } from 'react-redux';
